@@ -7,11 +7,11 @@ import 'package:ui_ecommerce/size_config.dart';
 
 class IconBtnWithCounter extends StatelessWidget {
   const IconBtnWithCounter({
-    Key? key,
+    super.key,
     required this.svgSrc,
     this.numOfItems = 0,
     required this.press,
-  }) : super(key: key);
+  });
 
   final String svgSrc;
   final int numOfItems;
@@ -32,7 +32,9 @@ class IconBtnWithCounter extends StatelessWidget {
               color: kSecondaryColor.withOpacity(0.1),
               shape: BoxShape.circle
             ),
-            child: SvgPicture.asset(svgSrc),
+            child: SvgPicture.asset(svgSrc,
+              color: kSecondaryColor
+            ),
           ),
           if (numOfItems != 0)
           Positioned(

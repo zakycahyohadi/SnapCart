@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ui_ecommerce/components/custom_bottom_navbar.dart';
+import 'package:ui_ecommerce/enums.dart';
 import 'package:ui_ecommerce/screens/home/components/body.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,10 +10,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home"),
-      ),
       body: Body(),
+      bottomNavigationBar: CustomBottomNavbar(
+        selectedMenu: MenuState.home,
+      ),
     );
   }
 }

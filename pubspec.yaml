@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.10+1
+  readmore: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -25,12 +26,14 @@ flutter:
     - assets/clone/
     - assets/fonts/
 
-fonts:
-  - family: Oswald
-    fonts:
-      - asset: assets/fonts/Oswald-VariableFont_wght.ttf
-      # - asset: assets/fonts/muli/Muli.ttf
-      # - asset: assets/fonts/muli/Muli-Bold.ttf
-      #   weight: 700
-      # - asset: assets/fonts/muli/Muli-Light.ttf
-      #   weight: 300
+  fonts:
+    - family: Oswald
+      fonts:
+        - asset: assets/fonts/Oswald-VariableFont_wght.ttf
+    - family: Muli
+      fonts:
+        - asset: assets/fonts/muli/Muli.ttf
+        - asset: assets/fonts/muli/Muli-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/muli/Muli-Light.ttf
+          weight: 300

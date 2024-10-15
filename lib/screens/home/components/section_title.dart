@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_ecommerce/constant.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
 class SectionTitle extends StatelessWidget {
@@ -24,13 +25,16 @@ class SectionTitle extends StatelessWidget {
             text,
             style: TextStyle(
               fontSize: getProportionateScreenWidth(18),
-              color: Colors.black
+              color: kPrimaryColor
             ),
           ),
           GestureDetector(
             onTap: press,
             child: Text(
               "See More",
+              style: TextStyle(
+                color: kSecondaryColor
+              )
             ),
           )
         ],

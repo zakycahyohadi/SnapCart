@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:ui_ecommerce/constant.dart';
 import 'package:ui_ecommerce/routes.dart';
 import 'package:ui_ecommerce/screens/splash/splash_screen.dart';
-import 'package:ui_ecommerce/theme.dart';
-
+import 'package:ui_ecommerce/theme.dart'; // Assuming you have a theme file
 
 void main() {
   runApp(const MainApp());
@@ -24,13 +22,14 @@ class MainApp extends StatelessWidget {
     );
   }
 
+  // Theme configuration with custom font and text theme
   ThemeData themeData() {
     return ThemeData(
-      fontFamily: 'Muli',
-      scaffoldBackgroundColor: Colors.white,
-      textTheme: TextTheme(),
+      fontFamily: 'Oswald', // Using the Oswald font
+      scaffoldBackgroundColor: Colors.white, // Set background color to white
+      textTheme: TextTheme(), // Custom TextTheme
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      inputDecorationTheme: inputDecorationTheme()
+      inputDecorationTheme: inputDecorationTheme(), // Define this function in theme.dart if used
     );
   }
-} // main app
+}

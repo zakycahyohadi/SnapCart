@@ -1,9 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ui_ecommerce/constant.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
 class Categories extends StatelessWidget {
+  const Categories({super.key});
+
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
@@ -33,10 +36,10 @@ class Categories extends StatelessWidget {
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
-    Key? key,
+    super.key,
     required this.text,
     required this.press, required this.icon,
-  }) : super(key: key);
+  });
 
   final String icon, text;
   final GestureTapCallback press;
@@ -54,8 +57,8 @@ class CategoryCard extends StatelessWidget {
               height: getProportionateScreenWidth(55),
               width: getProportionateScreenWidth(55),
               decoration: BoxDecoration(
-                color: Color(0xFFFFECDF),
-                borderRadius: BorderRadius.circular(10),
+                color: kSecondaryColor.withOpacity(0.6),
+                borderRadius: BorderRadius.circular(13),
               ),
               child: SvgPicture.asset(icon),
             ),

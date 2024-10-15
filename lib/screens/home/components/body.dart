@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ui_ecommerce/components/popular_products.dart';
-import 'package:ui_ecommerce/components/product_card.dart';
-import 'package:ui_ecommerce/constant.dart';
-import 'package:ui_ecommerce/models/Product.dart';
 import 'package:ui_ecommerce/screens/home/components/categories.dart';
 import 'package:ui_ecommerce/screens/home/components/discount_banner.dart';
 import 'package:ui_ecommerce/screens/home/components/home_header.dart';
-import 'package:ui_ecommerce/screens/home/components/section_title.dart';
 import 'package:ui_ecommerce/screens/home/components/special_offers.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
@@ -39,4 +34,3 @@ class Body extends StatelessWidget {
     );
   }
 }
-

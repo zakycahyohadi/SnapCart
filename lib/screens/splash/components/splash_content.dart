@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ui_ecommerce/constant.dart';
-import 'package:ui_ecommerce/size_config.dart';
+import 'package:ui_ecommerce/constant.dart';  // Make sure this file exists with necessary constants
+import 'package:ui_ecommerce/size_config.dart';  // This file should handle screen size configurations
 
 class SplashContent extends StatelessWidget {
   const SplashContent({
@@ -9,37 +9,45 @@ class SplashContent extends StatelessWidget {
     required this.image,
   });
 
-
   final String text, image;
+
+  
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Spacer(
-          flex: 2,
-        ),
-        Text('SnapCart',
+        const Spacer(flex: 2),  // Use 'const' to improve performance when possible
+        Text(
+          'SnapCart',
           style: TextStyle(
-            fontFamily: 'Roboto',
-            fontSize: getProportionateScreenWidth(36),
-            color: kPrimaryColor,
-            fontWeight: FontWeight.bold
+            fontFamily: 'Oswald',
+            fontSize: getProportionateScreenWidth(53),
+            color: kPrimaryColor,  // Ensure kPrimaryColor is defined in 'constant.dart'
+            fontWeight: FontWeight.bold,
           ),
         ),
-        Spacer(),
-        Text(text,
+        SizedBox(
+          height: getProportionateScreenHeight(30),  // Spacing between the title and the text
+        ),
+        Text(
+          text,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: 'Oswald',
-            fontSize: getProportionateScreenWidth(14),
-            color: kSecondaryColor
+            fontSize: getProportionateScreenWidth(19),
+            color: kSecondaryColor,  // Ensure kSecondaryColor is defined in 'constant.dart'
           ),
         ),
-        Spacer(
-          flex: 2,
+        SizedBox(
+          height: getProportionateScreenHeight(9),
         ),
-        Image.asset(image, height: getProportionateScreenHeight(265), width: getProportionateScreenWidth(235), ),
+      // Use Spacer to balance space distribution
+        Image.asset(
+          image,  // Display the provided image asset
+          height: getProportionateScreenHeight(255),  // Atur tinggi gambar
+          // fit: BoxFit.cover,  // Atur cara gambar menyesuaikan ukuran
+        ),
       ],
     );
   }

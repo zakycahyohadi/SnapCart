@@ -3,7 +3,9 @@ import 'package:ui_ecommerce/screens/login_success/components/body.dart';
 
 class LoginSuccessScreen extends StatelessWidget {
   static String routeName = "/login_success";
-  const LoginSuccessScreen({super.key});
+  const LoginSuccessScreen({
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,11 @@ class LoginSuccessScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: const Text("Login Success"),
+        title: const Text("Login Success",
+          style: TextStyle(
+            fontWeight: FontWeight.bold
+          ),
+        ),
       ),
       body: Body()
     );

@@ -23,8 +23,10 @@ class SearchField extends StatelessWidget {
         decoration: InputDecoration(
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
-          hintText: "Seach product",
+          hintText: "Search product",
+          hintStyle: TextStyle(color: kPrimaryColor),
           prefixIcon: Icon(Icons.search),
+          prefixIconColor: kPrimaryColor,
           contentPadding: EdgeInsets.symmetric(
             horizontal: getProportionateScreenWidth(20),
             vertical: getProportionateScreenWidth(10)

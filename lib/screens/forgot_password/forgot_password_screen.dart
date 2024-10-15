@@ -10,9 +10,14 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: const Text('Forgot Password'),
+        title: const Text('Forgot Password',
+        style: TextStyle(
+            fontWeight: FontWeight.bold
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 20.0),

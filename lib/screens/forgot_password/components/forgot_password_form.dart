@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ui_ecommerce/components/costum_suffix_icon.dart';
 import 'package:ui_ecommerce/components/my_default_button.dart';
 import 'package:ui_ecommerce/constant.dart';
-import 'package:ui_ecommerce/error_form.dart';
+import 'package:ui_ecommerce/components/form_error.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
 class ForgotPasswordForm extends StatefulWidget {

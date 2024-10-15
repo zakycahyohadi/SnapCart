@@ -38,11 +38,16 @@ class _BodyState extends State < Body > {
                   // print(currentPage);
                 },
                 itemCount: splashData.length,
+                scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => SplashContent(
-                  text: splashData[index]["text"] !, //string nullable
+                  
+                  text: splashData[index]["text"] !,
                   image: splashData[index]["image"] !
                 )
               ),
+            ),
+            SizedBox(
+              height: getProportionateScreenWidth(10),
             ),
             Expanded(
               flex: 2,
@@ -50,13 +55,15 @@ class _BodyState extends State < Body > {
                 padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: [
-                    Spacer(),
+                    SizedBox(
+                      height: getProportionateScreenWidth(150),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(splashData.length, (index) => dotBuilder(index: index))
                     ),
-                    const Spacer(flex: 3, ),
-                      MyDefaultButton(text: 'continue', press: () {
+                    const Spacer(flex: 1, ),
+                      MyDefaultButton(text: 'Continue', press: () {
                         Navigator.pushNamed(context, '/sign_in');
                       }, ),
                       Spacer(),

@@ -16,7 +16,14 @@ Because shopping should be as fun and straightforward as possible! Whether you'r
 
 Here’s a sneak peek at what you can expect:
 
+<<<<<<< HEAD
 ![Home Screen](Splash-Toko-Ku.png)
+=======
+![Home Screen](Mockups/Splash-Old.png),
+![Home Screen Update](Mockups/Splash-New.png) ,
+![Form Screen Update](Mockups/Form.png) ,
+![Shop Screen](Mockups/Splash-New.png) ,
+>>>>>>> 742ce78 (Maybe This Last)
 
 ## 🚀 Features
 

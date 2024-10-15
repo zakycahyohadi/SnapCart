@@ -13,7 +13,7 @@ class Body extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: SizeConfig.screenHeight * 0.04),
-        Image.asset("assets/clone/success.png",
+        Image.asset("assets/clone/succes-new.png",
           height: SizeConfig.screenHeight * 0.4
         ),
         SizedBox(height: SizeConfig.screenHeight * 0.08),
