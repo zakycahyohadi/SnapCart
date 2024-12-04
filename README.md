@@ -20,7 +20,7 @@ Here’s a sneak peek at what you can expect:
 ![Home Screen Update](Mockups/Splash-New.png) ,
 ![Form Screen Update](Mockups/Form.png) ,
 ![Shop Screen](Mockups/Shop.png) ,
-![Last Update Application](Mockups/last-mockup.webp) 
+![Last Update Application](Mockups/last-mockup.webp) ,
 
 ## 🚀 Features
 
