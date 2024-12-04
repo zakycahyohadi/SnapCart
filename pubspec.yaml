@@ -1,39 +1,52 @@
 name: ui_ecommerce
-description: "A new Flutter project."
-publish_to: 'none'
-version: 0.1.0
+description: A new Flutter project.
 
+# Supaya proyek ini nggak dipublish ke pub.dev
+publish_to: 'none'
+
+# Versi aplikasi, format: [versi].[minor].[patch]+[build_number]
+version: 0.1.0+1 
+
+# Versi SDK Flutter yang didukung
 environment:
-  sdk: ^3.5.1
+  sdk: ">=3.5.1 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.10+1
-  readmore: ^3.0.0
+  device_preview: ^1.2.0 # Untuk pratinjau aplikasi di perangkat berbeda
+  flutter_launcher_icons: ^0.14.1 # Untuk mengganti ikon aplikasi
+  flutter_slidable: # Untuk membuat widget geser (swipe)
+    git:
+      url: https://github.com/letsar/flutter_slidable.git
+      ref: master
+  flutter_svg: ^2.0.16 # Untuk mendukung file SVG
+  provider: ^6.1.2 # Untuk state management
+  readmore: ^3.0.0 # Untuk teks "Read More" atau "Baca Selengkapnya"
+  shared_preferences: ^2.3.3 # Untuk menyimpan data lokal (key-value)
 
 dev_dependencies:
-  flutter_test:
+  flutter_test: # Untuk testing aplikasi
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^4.0.0 # Untuk memastikan kode lebih rapi dan sesuai standar
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/clone/icon-app.png" # Path ke ikon aplikasi
 
 flutter:
   uses-material-design: true
 
+  # Daftar asset yang digunakan dalam proyek
   assets: 
-    - assets/images/
-    - assets/icons/
-    - assets/clone/
-    - assets/fonts/
+    - assets/images/ # Folder untuk gambar
+    - assets/icons/ # Folder untuk ikon
+    - assets/clone/ # Folder lain yang kamu gunakan
+    - assets/fonts/ # Folder untuk font
 
+  # Daftar font yang digunakan
   fonts:
     - family: Oswald
       fonts:
         - asset: assets/fonts/Oswald-VariableFont_wght.ttf
-    - family: Muli
-      fonts:
-        - asset: assets/fonts/muli/Muli.ttf
-        - asset: assets/fonts/muli/Muli-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/muli/Muli-Light.ttf
-          weight: 300

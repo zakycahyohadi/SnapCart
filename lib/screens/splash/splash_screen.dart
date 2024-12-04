@@ -4,15 +4,19 @@ import 'package:ui_ecommerce/size_config.dart';
 
 class SplashScreen extends StatelessWidget {
   static String routeName = "/splash";
-  const SplashScreen({
-    super.key
-  });
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    // Cek apakah dalam mode gelap
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      body: Body(),
+      // Background color berdasarkan tema
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
+      body: const Body(),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ui_ecommerce/constant.dart';
-import 'package:ui_ecommerce/size_config.dart';
+import 'package:provider/provider.dart';
+import 'package:ui_ecommerce/state_managements/search_provider.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({
@@ -9,31 +9,26 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final searchProvider = Provider.of<SearchProvider>(context);
+
     return Container(
-      width: SizeConfig.screenWidth * 0.6,
-      height: 50,
+      width: MediaQuery.of(context).size.width * 0.6,  // Menyesuaikan lebar dengan layar
       decoration: BoxDecoration(
-        color: kSecondaryColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(15)
+        color: Colors.grey.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(
         onChanged: (value) {
-          // search value
+          // Update search query
+          searchProvider.updateSearchQuery(value);
         },
         decoration: InputDecoration(
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+          border: InputBorder.none,
           hintText: "Search product",
-          hintStyle: TextStyle(color: kPrimaryColor),
-          prefixIcon: Icon(Icons.search),
-          prefixIconColor: kPrimaryColor,
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(20),
-            vertical: getProportionateScreenWidth(10)
-          ),
+          prefixIcon: const Icon(Icons.search),
         ),
       ),
     );
   }
 }
-

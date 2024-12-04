@@ -10,54 +10,59 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-        child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: getPropScreenWidth(20)),
           child: Column(
             children: [
-              SizedBox(height: SizeConfig.screenHeight * 0.05,),
-              Text("OTP Verification", style: headingStyle, ),
-              Text("We sent your code to +1 898 860 ***"),
-              buildTimer(),
-              SizedBox(height: SizeConfig.screenHeight * 0.15,),
-              OtpForm(),
-              SizedBox(height: SizeConfig.screenHeight * 0.1,),
-              GestureDetector(
-                onTap: () {
-                  // resend your OTP
-                },
-                child: Text(
-                  "Resend OTP Code",
-                  style: TextStyle(decoration: TextDecoration.underline),
+              SizedBox(height: SizeConfig.screenHeight * 0.03),
+              Text(
+                "Secure OTP Verification",
+                style: headingStyle,
+              ),
+              const Text(
+                  "Code sent to +62 123 321 ***. Please check your inbox.",
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
                 ),
-              )
+                SizedBox(height: SizeConfig.screenHeight * 0.01),
+
+                timer(),
+                SizedBox(height: SizeConfig.screenHeight * 0.15),
+                const OtpForm(),
             ],
           ),
-        ),
+        )
       ),
     );
   }
 
-  Row buildTimer() {
+
+  Row timer() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("This code will expired in "),
-        TweenAnimationBuilder(
-          tween: Tween(begin: 30.0, end: 0),
-          duration: Duration(seconds: 30),
-          builder: (context, value, child) => Text("00:${value.toInt()}",
-            style: TextStyle(
-              color: kPrimaryColor
-            ),
+        
+        const Text(
+            "This code will expired in ",
+            textAlign: TextAlign.center,
           ),
-          onEnd: () {},
-        )
+          TweenAnimationBuilder(
+            tween: Tween(begin: 60.0, end: 0.0),
+            duration: const Duration(seconds: 60),
+              builder: (context, value, child) {
+                return Text(
+                  "00:${value.toInt()}",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor),
+                );
+              },
+              onEnd: () {},
+          )
       ],
     );
   }
 }
-
-

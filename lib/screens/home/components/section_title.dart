@@ -1,44 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:ui_ecommerce/constant.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
-    super.key,
-
-    required this.text,
-    required this.press,
-
+    super.key, required this.title,
   });
 
-  final String text;
-  final GestureTapCallback press;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: getProportionateScreenWidth(18),
-              color: kPrimaryColor
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: getPropScreenWidth(18),
+            fontWeight: FontWeight.bold,
           ),
-          GestureDetector(
-            onTap: press,
-            child: Text(
-              "See More",
-              style: TextStyle(
-                color: kSecondaryColor
-              )
-            ),
-          )
-        ],
-      ),
+        ),
+        const Text("See More", style: TextStyle(
+          color: Color(0xFFBBBBBB),
+        ),)
+      ],
     );
   }
 }
+

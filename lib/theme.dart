@@ -1,61 +1,41 @@
 import 'package:flutter/material.dart';
-import 'constant.dart';
+import 'package:ui_ecommerce/constant.dart';
 
-ThemeData themeData() {
+ThemeData themeData(bool isDarkMode) {
   return ThemeData(
-    // Nonaktifkan Material 3 jika tidak diperlukan
-    useMaterial3: false,
-
-    // Set font global untuk aplikasi
-    fontFamily: 'Oswald',
-
-    // Set warna latar belakang aplikasi
-    scaffoldBackgroundColor: Colors.white,
-
-    // Konfigurasi AppBar
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white, // Warna background AppBar
-      elevation: 0, // Menghilangkan bayangan di AppBar
-      iconTheme: IconThemeData(color: Colors.black), // Warna ikon di AppBar
-      titleTextStyle: TextStyle(
-        color: Colors.black, // Warna teks judul di AppBar
-        fontSize: 18, // Ukuran font teks judul
-        fontWeight: FontWeight.bold, // Ketebalan teks judul
-      ),
-    ),
-
-    // Konfigurasi TextTheme (untuk mengatur gaya teks global)
-    textTheme: const TextTheme(
-      bodyMedium: TextStyle(
-        color: kTextColor, // Warna teks body
-        fontSize: 14, // Ukuran teks body
-      ),
-      titleMedium: TextStyle(
-        color: kTextColor, // Warna teks title
-        fontSize: 18, // Ukuran teks title
-      ),
-    ),
-
-    // Mengatur visual density untuk kompatibilitas platform
-    visualDensity: VisualDensity.adaptivePlatformDensity,
-
-    // Konfigurasi tema InputDecoration (untuk input forms)
-    inputDecorationTheme: inputDecorationTheme(),
-  );
+      fontFamily: 'Oswald',
+      brightness: isDarkMode ? Brightness.dark : Brightness.light,
+      appBarTheme: AppBarTheme(
+          elevation: 0,
+          iconTheme: IconThemeData(color: isDarkMode ? Colors.white : Colors.black),
+          titleTextStyle: TextStyle(
+            color: isDarkMode ? Colors.white : Colors.black,
+            fontSize: 20,
+          )),
+      textTheme: textTheme(),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      inputDecorationTheme: inputDecorationTheme());
 }
 
-// Fungsi untuk mengatur InputDecorationTheme
-InputDecorationTheme inputDecorationTheme() {
-  const OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(28)),
-    borderSide: BorderSide(color: kPrimaryColor),
-    gapPadding: 10,
-  );
-  return InputDecorationTheme(
-    contentPadding: const EdgeInsets.symmetric(horizontal: 42, vertical: 20),
-    enabledBorder: outlineInputBorder,
-    focusedBorder: outlineInputBorder,
-    border: outlineInputBorder,
-    labelStyle: const TextStyle(color: kTextColor),
-  );
-}
+  TextTheme textTheme() {
+    return const TextTheme(
+        titleMedium: TextStyle(color: kTextColor),
+        bodyMedium: TextStyle(color: kTextColor),
+      );
+  }
+
+  InputDecorationTheme inputDecorationTheme() {
+
+    var outlineInputBorder = const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(28)),
+              borderSide: BorderSide(color: kPrimaryColor),
+              gapPadding: 10);
+
+    return InputDecorationTheme(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+          labelStyle: const TextStyle(color: kPrimaryColor),
+          enabledBorder: outlineInputBorder,
+          focusedBorder: outlineInputBorder,
+          border: outlineInputBorder,
+        );
+  }

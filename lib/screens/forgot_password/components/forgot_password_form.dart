@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:ui_ecommerce/components/costum_suffix_icon.dart';
+import 'package:ui_ecommerce/components/custom_suffix_icon.dart';
+import 'package:ui_ecommerce/components/error_form.dart';
 import 'package:ui_ecommerce/components/my_default_button.dart';
 import 'package:ui_ecommerce/constant.dart';
-import 'package:ui_ecommerce/components/form_error.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
 class ForgotPasswordForm extends StatefulWidget {
-  const ForgotPasswordForm({
-    super.key
-  });
+  const ForgotPasswordForm({super.key});
+
   @override
-  State < ForgotPasswordForm > createState() => _ForgotPasswordFormState();
+  State<ForgotPasswordForm> createState() => _ForgotPasswordFormState();
 }
 
-class _ForgotPasswordFormState extends State < ForgotPasswordForm > {
-  final _formKey = GlobalKey < FormState > ();
-  String ? email;
-  final List < String > errors = [];
+class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
+  final _frontKey = GlobalKey<FormState>();
+  String? email;
+  final List<String> errors = [];
+  
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: _frontKey,
       child: Column(
         children: [
           emailFormField(),
-          SizedBox(height: getProportionateScreenHeight(20)),
+          SizedBox(height: getPropScreenHeight(20)),
           ErrorForm(errors: errors),
-          SizedBox(height: getProportionateScreenHeight(15)),
+          SizedBox(height: getPropScreenHeight(20)),
           MyDefaultButton(
-            text: "Reset Password",
+            text: "Send Link",
             press: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
+              if (_frontKey.currentState!.validate()) {
+                _frontKey.currentState!.save();
               }
             },
-          ),
-        ],
+          )
+        ]
       ),
     );
   }
@@ -43,16 +43,16 @@ class _ForgotPasswordFormState extends State < ForgotPasswordForm > {
     return TextFormField(
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
-        if (value.isNotEmpty && errors.contains(kEmailNullError)) {
+        if (value!.isNotEmpty && errors.contains(kEmailNullError)) {
           setState(() {
             errors.remove(kEmailNullError);
           });
-        } else if (emailValidatorRegExp.hasMatch(value) &&
-          errors.contains(kInvalidEmailError)) {
+        } else if (emailValidatorRegExp.hasMatch(value) && errors.contains(kInvalidEmailError)) {
           setState(() {
             errors.remove(kInvalidEmailError);
           });
         }
+        return;
       },
       validator: (value) {
         if (value!.isEmpty && !errors.contains(kEmailNullError)) {
@@ -60,9 +60,7 @@ class _ForgotPasswordFormState extends State < ForgotPasswordForm > {
             errors.add(kEmailNullError);
           });
           return "";
-        } else if (!emailValidatorRegExp.hasMatch(value) &&
-          (!errors.contains(kPassNullError) &&
-            !errors.contains(kInvalidEmailError))) {
+        } else if (!emailValidatorRegExp.hasMatch(value) && (!errors.contains(kPassNullError) && !errors.contains(kInvalidEmailError))) {
           setState(() {
             errors.add(kInvalidEmailError);
           });
@@ -72,12 +70,17 @@ class _ForgotPasswordFormState extends State < ForgotPasswordForm > {
       },
       keyboardType: TextInputType.emailAddress,
       decoration: const InputDecoration(
-        labelText: "Email",
-        hintText: "Enter your email",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CostumSuffixicon(
-          icon: "assets/icons/Mail.svg",
-        )),
+          labelText: "Email",
+          hintText: "Your email here",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: 
+          Icon(Icons.email_rounded,
+            size: 28.0,
+            color: kPrimaryColor,)
+          ),
     );
   }
 }
+
+
+

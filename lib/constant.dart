@@ -1,81 +1,32 @@
-// import 'package:flutter/material.dart';
-
-
-// const kPrimaryColor = Color(0xffff7643);
-// const kPrimaryLightColor = Color(0xffffecdf);
-// // this is list for Gradient
-// const kPrimaryGradientColor = LinearGradient(
-//   begin: Alignment.topLeft,
-//   end: Alignment.bottomRight,
-//   colors: [
-//     Color(0xffffa53e),
-//     Color(0xffff7643),
-//   ],
-// );
-// const kSecondaryColor = Color(0xff979797);
-// const kTextColor = Color(0xff757575);
-// const kBackgroundColor = Color(0xffF2F2F2);
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-
-// const kPrimaryColor = Color(0xff1E88E5); // Bright Blue - elegan dan modern
-// const kPrimaryLightColor = Color(0xffE3F2FD); // Soft Blue - lembut dan menenangkan
-// // this is list for Gradient
-// const kPrimaryGradientColor = LinearGradient(
-//   begin: Alignment.topLeft,
-//   end: Alignment.bottomRight,
-//   colors: [
-//     Color(0xff0288D1), // Strong Blue - memberikan kesan profesional
-//     Color(0xff1E88E5), // Bright Blue - konsisten dan modern
-//   ],
-// );
-// const kSecondaryColor = Color(0xffFF5722); // Bold Orange - aksen cerah yang menarik perhatian
-// const kTextColor = Color(0xff424242); // Deep Gray - kontras yang nyaman untuk teks
-// const kBackgroundColor = Color(0xffFAFAFA); // Soft Gray - latar belakang bersih dan elegan
-
-
-
-
+/* Saving All Constant Values */
 
 import 'package:flutter/material.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
-const kPrimaryColor = Color.fromARGB(255, 255, 64, 129); // Bright Pink - cerah dan mencolok
-const kPrimaryLightColor = Color(0xffF8BBD0); // Light Pink - lembut dan menyegarkan
-// this is list for Gradient
+const kPrimaryColor = Color.fromARGB(255, 255, 64, 129); // Warna pink utama
+const kPrimaryLightColor = Color.fromARGB(255, 255, 183, 197); // Warna pink muda untuk efek terang
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [
-    Color(0xffFF80AB), // Light Pink - cerah dan energik
-    Color(0xffFF4081), // Bright Pink - utama dan menarik
-  ],
+    Color.fromARGB(255, 255, 123, 170), // Pink lebih terang
+    Color.fromARGB(255, 255, 64, 129),  // Pink utama untuk kontras
+  ]
 );
-const kSecondaryColor = Color(0xff4CAF50); // Fresh Green - aksen cerah yang segar
-const kTextColor = Color(0xff212121); // Charcoal Gray - kontras yang nyaman untuk teks
-const kBackgroundColor = Color(0xffF5F5F5); // Light Gray - latar belakang bersih dan modern
+
+const kSecondaryColor = Color(0xff979797); // Bisa dipertahankan atau diganti dengan warna lain sesuai tema
+const kTextColor = Color(0xff757575); // Warna teks netral
+const kInActiveIconColor = Color(0xFFB6B6B6); // Warna ikon tidak aktif
 
 
 
-
-
-
-// animation duration
 const kAnimationDuration = Duration(milliseconds: 200);
 
-
 final headingStyle = TextStyle(
-            fontSize: getProportionateScreenWidth(28),
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-            height: 1.5
-          );
-
+  fontSize: getPropScreenWidth(28),
+  fontWeight: FontWeight.bold,
+  height: 1.5,
+);
 
 // Form Error
 final RegExp emailValidatorRegExp =
@@ -85,20 +36,34 @@ const String kInvalidEmailError = "Please Enter Valid Email";
 const String kPassNullError = "Please Enter your password";
 const String kShortPassError = "Password is too short";
 const String kMatchPassError = "Passwords don't match";
+
+// Complete Profile
 const String kNameNullError = "Please Enter your name";
-const String kPhoneNumberNullError = "Please Enter your phone number";
-const String kAdressNullError = "Please Enter your address";
+const String kPhoneNumberNullError = "Please enter your phone number";
+const String kAddressNullError = "Please enter address";
 
-final otpInputDecoration = InputDecoration(
-                contentPadding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
-                enabledBorder: outlineInputBorder(),
-                focusedBorder: outlineInputBorder(),
-                border: outlineInputBorder()
-              );
+// OTP style
 
-OutlineInputBorder outlineInputBorder() {
+final otpDecoration = InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: getPropScreenHeight(15),
+                    ),
+                    enabledBorder: otpOutlineInputBorder(),
+                    focusedBorder: otpOutlineInputBorder(),
+                    border: otpOutlineInputBorder(),
+                  );
+
+OutlineInputBorder otpOutlineInputBorder() {
   return OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: kPrimaryColor),
-              );
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(color: kTextColor),
+                  );
 }
+
+const defaultDuration = Duration(milliseconds: 250);
+
+// const for see more
+TextStyle seeMoreStyle = TextStyle(
+    fontSize: getPropScreenWidth(16),
+    fontWeight: FontWeight.bold,
+    color: kPrimaryColor);

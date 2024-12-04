@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ui_ecommerce/components/social_media_icon.dart';
 import 'package:ui_ecommerce/constant.dart';
 import 'package:ui_ecommerce/screens/complete_profile/components/complete_profile_form.dart';
 import 'package:ui_ecommerce/size_config.dart';
@@ -13,48 +12,34 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: SizeConfig.screenHeight * 0.02),
-            Text("Complete Profile",
-              style: headingStyle,
-            ),
-            Text(
-              "Complete your details or continue \nwith social media",
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: SizeConfig.screenHeight * 0.05),
-            CompleteProfileForm(),
-            SizedBox(height: getProportionateScreenHeight(30)),
-            Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Spacer(),
-                        SocialMediaIcon(
-                          icon: 'assets/icons/google-icon.svg',
-                          press: () {},
-                        ),
-              
-                        SocialMediaIcon(
-                          icon: 'assets/icons/facebook-2.svg',
-                          press: () {},
-                        ),
-              
-                        SocialMediaIcon(
-                          icon: 'assets/icons/twitter.svg',
-                          press: () {},
-                        ),
-                      ],
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: getPropScreenWidth(20)),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: SizeConfig.screenHeight * 0.03),
+              Text(
+                "Profile Completion",
+                style: headingStyle,
+              ),
+              SizedBox(height: SizeConfig.screenHeight * 0.01),
+              const Text(
+                  "Please provide the necessary details to complete your profile.",
+                  textAlign: TextAlign.center,
+                ),
+
+                SizedBox(height: SizeConfig.screenHeight * 0.06),
+                const CompleteProfileForm(),
+                  SizedBox(height: SizeConfig.screenHeight * 0.03),
+                  const Text(
+                      "By continuing your confirm that you agree \nwith our Term and Condition",
+                      textAlign: TextAlign.center,
                     ),
-            SizedBox(height: getProportionateScreenHeight(30)),
-            Text(
-              "By continuing your confirm that you agree \nwith our Term and Condition",
-              textAlign: TextAlign.center,
-            )
-          ],
+                    SizedBox(height: SizeConfig.screenHeight * 0.03),
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }

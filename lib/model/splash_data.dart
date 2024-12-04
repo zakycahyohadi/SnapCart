@@ -1,18 +1,14 @@
-List < Map < String,
-  String >> splashData = [
+List<Map<String, String>> splashData = [
   {
-    "text": "Welcome to SnapCart, your one-stop shop for everything!",
+    "text": "Welcome to SnapCart, Let’s shop!",
     "image": "assets/clone/splash_clone1.webp"
-    // "image": "assets/images/splash_1.png"//asli
   },
   {
-    "text": "Connecting you to stores across Indonesia, effortlessly.",
+    "text": "We help people connect with stores \naround The Great Britain",
     "image": "assets/clone/splash_clone2.webp"
-    // "image": "assets/images/splash_2.png"//asli
   },
   {
-    "text": "Shopping made simple. Stay home, shop smart, and relax!",
+    "text": "We show the easy way to shop. \nJust stay at home with us",
     "image": "assets/clone/splash_clone3.webp"
-    // "image": "assets/images/splash_3.png"//asli
   },
 ];

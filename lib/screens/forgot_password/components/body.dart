@@ -10,61 +10,48 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity, // Membuat lebar sebesar mungkin (mengisi seluruh layar)
+      width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            SizedBox(height: SizeConfig.screenHeight * 0.1), // Jarak dari atas
-            Text(
-              'Forgot Password',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
+        padding: EdgeInsets.symmetric(horizontal: getPropScreenWidth(20)),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: SizeConfig.screenHeight * 0.04),
+              Text(
+                "Forgot Password", 
+                style: TextStyle(
+                  fontSize: getPropScreenWidth(28),
+                  fontWeight: FontWeight.bold
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Please enter your email and we will send \nyou a link to return to your account',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.black54,
-                height: 1.5,
+              SizedBox(height: SizeConfig.screenHeight * 0.01),
+              const Text(
+                "Please enter your email and we will send \nyou a link to return to your account",
+                textAlign: TextAlign.center,
               ),
-            ),
-            SizedBox(height: SizeConfig.screenHeight * 0.06),
-            const ForgotPasswordForm(),
-            SizedBox(height: SizeConfig.screenHeight * 0.06),
-            dontHaveAccountText(context),
-          ],
+              SizedBox(height: SizeConfig.screenHeight * 0.06),
+              const ForgotPasswordForm(),
+              SizedBox(height: SizeConfig.screenHeight * 0.06),
+               Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account? "),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, SignUpScreen.routeName);
+                      },
+                      child: const Text("Sign Up", style: TextStyle(color: kPrimaryColor))
+                    )
+                  ],
+                )
+            ],
+          ),
         ),
       ),
     );
   }
-
-  Widget dontHaveAccountText(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          'Don\'t have an account?',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Colors.black54,
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, SignUpScreen.routeName);
-          },
-          child: Text(
-            ' Sign Up',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: kPrimaryColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
 }
+
+
+
+

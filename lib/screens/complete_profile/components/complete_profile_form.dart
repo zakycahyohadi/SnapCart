@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ui_ecommerce/components/costum_suffix_icon.dart';
+import 'package:ui_ecommerce/components/error_form.dart';
 import 'package:ui_ecommerce/components/my_default_button.dart';
 import 'package:ui_ecommerce/constant.dart';
-import 'package:ui_ecommerce/components/form_error.dart';
 import 'package:ui_ecommerce/screens/otp/otp_screen.dart';
 import 'package:ui_ecommerce/size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
   const CompleteProfileForm({
-    super.key,
+    super.key
   });
 
   @override
@@ -16,106 +15,92 @@ class CompleteProfileForm extends StatefulWidget {
 }
 
 class _CompleteProfileFormState extends State < CompleteProfileForm > {
-  final _formKey = GlobalKey < FormState > ();
-  final List < String > errors = [];
   String ? firstName;
   String ? lastName;
   String ? phoneNumber;
   String ? address;
 
-  void addError({
-    required String error
-  }) {
-    if (!errors.contains(error)) {
-      setState(() {
-        errors.add(error);
-      });
-    }
-  }
-
-  void removeError({
-    required String error
-  }) {
-    if (errors.contains(error)) {
-      setState(() {
-        errors.remove(error);
-      });
-    }
-  }
+  final _formKey = GlobalKey < FormState > ();
+  List < String > errors = [];
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-        child: Column(
-          children: [
-            buildFirstNameFormField(),
-            SizedBox(height: getProportionateScreenHeight(20)),
-            buildLastNameFormField(),
-            SizedBox(height: getProportionateScreenHeight(20)),
-            buildPhoneNumberFormField(),
-            SizedBox(height: getProportionateScreenHeight(20)),
-            buildAddressFormField(),
-            ErrorForm(errors: errors),
-            SizedBox(height: getProportionateScreenHeight(30)),
-            MyDefaultButton(
-              text: "Continue",
-              press: () {
-                if (_formKey.currentState!.validate()) {
-                  // go to OtpScreen
-                  Navigator.pushNamed(context, OtpScreen.routeName);
-                }
-              })
+      child: Column(
+        children: [
+          firstNameFormField(),
+          SizedBox(height: getPropScreenHeight(20)),
+          lastNameFormField(),
+          SizedBox(height: getPropScreenHeight(20)),
+          phoneNumberFormField(),
+          SizedBox(height: getPropScreenHeight(20)),
+          addressFormField(),
+          SizedBox(height: getPropScreenHeight(20)),
+          ErrorForm(errors: errors),
+          SizedBox(height: getPropScreenHeight(20)),
+          MyDefaultButton(
+            text: "Continue",
+            press: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+              }
 
-          ],
-        ),
+              if (errors.isEmpty) {
+                Navigator.pushNamed(context, OtpScreen.routeName);
+              }
+            }
+          ),
+        ]
       ),
     );
   }
 
-  TextFormField buildAddressFormField() {
+  TextFormField addressFormField() {
     return TextFormField(
       onSaved: (newValue) => address = newValue,
       onChanged: (value) {
-        if (value.isNotEmpty) {
+        if (value!.isNotEmpty && errors.contains(kAddressNullError)) {
           setState(() {
-            errors.remove(kAdressNullError);
+            errors.remove(kAddressNullError);
           });
         }
       },
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.isEmpty && !errors.contains(kAddressNullError)) {
           setState(() {
-            errors.add(kAdressNullError);
+            errors.add(kAddressNullError);
           });
           return "";
         }
         return null;
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         labelText: "Address",
-        hintText: "Enter your Address",
-        suffixIcon: CostumSuffixicon(icon: "assets/icons/Location point.svg", ),
+        hintText: "Your address here",
         floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: Icon(
+          Icons.location_on, // Ikon lokasi bawaan Flutter
+          size: 28, // Ukuran ikon
+          color: kPrimaryColor, // Warna ikon menggunakan kPrimaryColor
+        ),
       ),
+
     );
   }
 
-  TextFormField buildPhoneNumberFormField() {
+  TextFormField phoneNumberFormField() {
     return TextFormField(
-      keyboardType: TextInputType.number,
       onSaved: (newValue) => phoneNumber = newValue,
       onChanged: (value) {
-        if (value.isNotEmpty) {
+        if (value!.isNotEmpty && errors.contains(kPhoneNumberNullError)) {
           setState(() {
             errors.remove(kPhoneNumberNullError);
           });
         }
       },
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.isEmpty && !errors.contains(kPhoneNumberNullError)) {
           setState(() {
             errors.add(kPhoneNumberNullError);
           });
@@ -123,41 +108,33 @@ class _CompleteProfileFormState extends State < CompleteProfileForm > {
         }
         return null;
       },
-
-      decoration: const InputDecoration(
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
         labelText: "Phone Number",
-        hintText: "Enter your phone number",
-        suffixIcon: CostumSuffixicon(icon: "assets/icons/Phone.svg", ),
+        hintText: "Your phone number here",
         floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: Icon(
+          Icons.phone, // Ikon telepon bawaan Flutter
+          size: 28, // Ukuran ikon
+          color: kPrimaryColor, // Warna ikon menggunakan kPrimaryColor
+        ),
       ),
+
     );
   }
 
-  TextFormField buildLastNameFormField() {
+  TextFormField lastNameFormField() {
     return TextFormField(
       onSaved: (newValue) => lastName = newValue,
-      keyboardType: TextInputType.emailAddress,
-      decoration: const InputDecoration(
-        labelText: "Last Name",
-        hintText: "Enter your last name",
-        suffixIcon: CostumSuffixicon(icon: "assets/icons/User.svg", ),
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-      ),
-    );
-  }
-
-  TextFormField buildFirstNameFormField() {
-    return TextFormField(
-      onSaved: (newValue) => firstName = newValue,
       onChanged: (value) {
-        if (value.isNotEmpty) {
+        if (value!.isNotEmpty && errors.contains(kNameNullError)) {
           setState(() {
             errors.remove(kNameNullError);
           });
         }
       },
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.isEmpty && !errors.contains(kNameNullError)) {
           setState(() {
             errors.add(kNameNullError);
           });
@@ -165,13 +142,50 @@ class _CompleteProfileFormState extends State < CompleteProfileForm > {
         }
         return null;
       },
-      keyboardType: TextInputType.emailAddress,
-      decoration: const InputDecoration(
-        labelText: "First Name",
-        hintText: "Enter your first name",
-        suffixIcon: CostumSuffixicon(icon: "assets/icons/User.svg", ),
+      decoration: InputDecoration(
+        labelText: "Last Name",
+        hintText: "Your last name here",
         floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: Icon(
+          Icons.person, // Ikon user bawaan Flutter
+          size: 34, // Ukuran ikon
+          color: kPrimaryColor, // Warna ikon menggunakan kPrimaryColor
+        ),
       ),
+
+    );
+  }
+
+  TextFormField firstNameFormField() {
+    return TextFormField(
+      onSaved: (newValue) => firstName = newValue,
+      onChanged: (value) {
+        if (value!.isNotEmpty && errors.contains(kNameNullError)) {
+          setState(() {
+            errors.remove(kNameNullError);
+          });
+        }
+      },
+      validator: (value) {
+        if (value!.isEmpty && !errors.contains(kNameNullError)) {
+          setState(() {
+            errors.add(kNameNullError);
+          });
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "First Name",
+        hintText: "Your first name here",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: Icon(
+          Icons.person, // Ikon user bawaan Flutter
+          size: 34, // Ukuran ikon
+          color: kPrimaryColor, // Warna ikon menggunakan kPrimaryColor
+        ),
+      ),
+
     );
   }
 }
