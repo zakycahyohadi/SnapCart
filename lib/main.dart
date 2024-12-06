@@ -21,7 +21,7 @@ Future<void> main() async {
   
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode, // Enable only in debug mode
+      enabled: true, // Enable only in debug mode
       builder: (context) => MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => ThemeProvider()),
