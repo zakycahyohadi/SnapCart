@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,7 +21,7 @@ Future<void> main() async {
   
   runApp(
     DevicePreview(
-      enabled: true, // Enable only in debug mode
+      enabled: false, // Enable only in debug mode
       builder: (context) => MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => ThemeProvider()),
